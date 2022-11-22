@@ -10,7 +10,7 @@ pico_sdk_init()
 
 add_executable(can_tx_pico)
 
-pico_generate_pio_header(can_tx_pico /home/kedar/Programs/pico/CAN_TX/can_tx.pio)
+pico_generate_pio_header(can_tx_pico ${CMAKE_CURRENT_LIST_DIR}/can_tx.pio)
 
 target_sources(can_tx_pico PRIVATE can_tx.c)
 
