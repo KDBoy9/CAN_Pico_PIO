@@ -50,9 +50,9 @@ static inline void can_tx_program_init(PIO pio, uint sm, uint offset, uint outpu
 
 
     sm_config_set_out_pins( &c , output_pin , 1 ) ;
-    sm_config_set_out_shift( &c , true , true , 32 ) ;
+    sm_config_set_out_shift( &c , flase , false , 32 ) ;
     sm_config_set_in_pins( &c , input_pin ) ;
-    sm_config_set_in_shift( &c , true , true , 32 ) ;
+    sm_config_set_in_shift( &c , false , false , 32 ) ;
     sm_config_set_set_pins( &c , output_pin , 1 ) ;
     sm_config_set_jmp_pin( &c , input_pin ) ;
 
