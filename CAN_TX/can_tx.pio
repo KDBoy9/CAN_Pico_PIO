@@ -1,0 +1,85 @@
+.program can_tx
+
+start:
+	set pins, 1
+	pull
+b_check:
+	set y, 6
+	wait 1 pin 0
+check:
+	jmp y-- a_check  [8]
+	jmp transmit
+a_check:
+	jmp pin check
+	jmp b_check
+transmit:
+	set x, 0
+	out x, 1
+	jmp !x transmit_0
+	set pins, 1
+	jmp pin empty_check
+	jmp incorrect
+transmit_0:
+	set pins, 0
+	jmp pin incorrect
+empty_check:
+	jmp !osre transmit  [4]
+	pull noblock
+	mov y, osr
+	jmp x!=y transmit  [1]
+	set x, 11
+	mov isr, x
+	push noblock
+	jmp start
+incorrect:
+	set x, 22
+	mov isr, x
+	push noblock
+	jmp start
+
+
+
+% c-sdk {
+#include "hardware/clocks.h"
+#include "hardware/dma.h"
+
+static inline void can_tx_program_init(PIO pio, uint sm, uint offset, uint output_pin , uint input_pin , uint dma_chan ) {
+
+    pio_sm_config c = can_tx_program_get_default_config( offset ) ;
+    dma_channel_config d = dma_channel_get_default_config( dma_chan ) ;
+
+
+    sm_config_set_out_pins( &c , output_pin , 1 ) ;
+    sm_config_set_out_shift( &c , true , true , 32 ) ;
+    sm_config_set_in_pins( &c , input_pin ) ;
+    sm_config_set_in_shift( &c , true , true , 32 ) ;
+    sm_config_set_set_pins( &c , output_pin , 1 ) ;
+    sm_config_set_jmp_pin( &c , input_pin ) ;
+
+
+	channel_config_set_read_increment( &d , true ) ;
+	channel_config_set_write_increment( &d , false ) ;
+	channel_config_set_dreq( &d , pio_get_dreq( pio , sm , true ) ) ;
+	channel_config_set_transfer_data_size( &d , DMA_SIZE_32 ) ;
+
+	dma_channel_set_write_addr( dma_chan , &pio->txf[sm] , false ) ;
+
+
+    pio_gpio_init( pio , output_pin ) ;
+    pio_gpio_init( pio , input_pin ) ;
+
+    pio_sm_set_consecutive_pindirs( pio , sm , output_pin , 1 , true ) ;
+    pio_sm_set_consecutive_pindirs( pio , sm , input_pin , 1 , false ) ;
+
+    sm_config_set_clkdiv( &c , 250 ) ;
+
+
+    pio_sm_init( pio , sm , offset , &c ) ;
+
+    dma_channel_set_config( dma_chan , &d , false ) ;
+    dma_channel_start( dma_chan ) ;
+
+
+    pio_sm_set_enabled( pio , sm , true ) ;
+}
+%}
