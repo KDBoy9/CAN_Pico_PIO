@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
 #include "hardware/dma.h"
@@ -299,11 +300,8 @@ void make_can_word( canhack_frame_t * pico_frame , uint32_t * can_buffer , uint3
 
 int main()
 {
-#ifndef PICO_DEFAULT_LED_PIN
-#warning blink example requires a board with a regular LED
-#else
+    stdio_init_all() ;
 
-    uint LED_PIN = PICO_DEFAULT_LED_PIN ;
 	PIO pio = pio0 ;
 	uint offset = pio_add_program( pio , &can_tx_program ) ;
 	uint sm = pio_claim_unused_sm( pio , true ) ;
@@ -327,15 +325,15 @@ int main()
 	canhack_set_frame( 0x201 , 0x568 , false , false , 0x03 , data , &pico_frame ) ;
 
 	make_can_word( &pico_frame , can_buffer , &can_buffer_count ) ;
-while(true)
-{
-    for( int i = 0 ; i < can_buffer_count ; i++ )
-        dma_channel_transfer_from_buffer_now( dma_chan , &can_buffer[i] , 1 ) ;
-}
-
-
-
-
-#endif
+    while(true)
+    {
+        sleep_ms( 3000 ) ;
+        for( int i = 0 ; i < can_buffer_count ; i++ )
+        {
+            printf( "%lu\n" , can_buffer[i] ) ;
+            dma_channel_transfer_from_buffer_now( dma_chan , &can_buffer[i] , 1 ) ;
+        }
+    }
+    return 0 ;
 
 }

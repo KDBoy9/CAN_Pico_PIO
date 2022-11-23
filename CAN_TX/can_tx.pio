@@ -4,7 +4,7 @@ start:
 	set pins, 1
 	pull
 b_check:
-	set y, 6
+	set y, 8
 	wait 1 pin 0
 check:
 	jmp y-- a_check  [8]
@@ -50,9 +50,9 @@ static inline void can_tx_program_init(PIO pio, uint sm, uint offset, uint outpu
 
 
     sm_config_set_out_pins( &c , output_pin , 1 ) ;
-    sm_config_set_out_shift( &c , flase , false , 32 ) ;
+    sm_config_set_out_shift( &c , true , true , 32 ) ;
     sm_config_set_in_pins( &c , input_pin ) ;
-    sm_config_set_in_shift( &c , false , false , 32 ) ;
+    sm_config_set_in_shift( &c , true , true , 32 ) ;
     sm_config_set_set_pins( &c , output_pin , 1 ) ;
     sm_config_set_jmp_pin( &c , input_pin ) ;
 
@@ -71,7 +71,7 @@ static inline void can_tx_program_init(PIO pio, uint sm, uint offset, uint outpu
     pio_sm_set_consecutive_pindirs( pio , sm , output_pin , 1 , true ) ;
     pio_sm_set_consecutive_pindirs( pio , sm , input_pin , 1 , false ) ;
 
-    sm_config_set_clkdiv( &c , 250 ) ;
+    sm_config_set_clkdiv( &c , 25 ) ;
 
 
     pio_sm_init( pio , sm , offset , &c ) ;
