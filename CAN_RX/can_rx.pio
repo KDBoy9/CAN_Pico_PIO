@@ -1,0 +1,80 @@
+.program can_rx
+
+start:
+	set y, 8
+	wait 1 pin 0 [5]
+	jmp a_check
+b_check:
+	jmp pin a_check [4]
+	jmp start
+a_check:
+	jmp y-- b_check [4]
+	wait 0 pin 0
+	set y, 6
+recv:
+	in pins, 1
+	jmp pin is_one
+	set x, 0 [4]
+	jmp recv [2]
+is_one:
+	jmp !x was_zero
+	jmp y-- recv [6]
+	jmp at_the_end
+was_zero:
+	set x, 1
+	set y, 6 [2]
+	jmp recv [2]
+at_the_end:
+	set x, 0
+	mov y, !x
+end_loop:
+	mov x, isr
+	jmp !x end
+	in y, 1
+	jmp end_loop
+end:
+	set x, 0
+	mov isr, !x
+	push
+	jmp start
+
+
+% c-sdk {
+#include "hardware/clocks.h"
+#include "hardware/dma.h"
+
+static inline void can_rx_program_init(PIO pio, uint sm, uint offset, uint input_pin , uint dma_chan ) {
+
+    pio_sm_config c = can_rx_program_get_default_config( offset ) ;
+    dma_channel_config d = dma_channel_get_default_config( dma_chan ) ;
+
+    sm_config_set_in_pins( &c , input_pin ) ;
+    sm_config_set_in_shift( &c , false , true , 32 ) ;
+    sm_config_set_jmp_pin( &c , input_pin ) ;
+    sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX);
+
+
+	channel_config_set_read_increment( &d , false ) ;
+	channel_config_set_write_increment( &d , false ) ;
+	channel_config_set_dreq( &d , pio_get_dreq( pio , sm , true ) ) ;
+	channel_config_set_transfer_data_size( &d , DMA_SIZE_32 ) ;
+
+	dma_channel_set_read_addr( dma_chan , &pio->rxf[sm] , false ) ;
+
+
+    pio_gpio_init( pio , input_pin ) ;
+
+    pio_sm_set_consecutive_pindirs( pio , sm , input_pin , 1 , false ) ;
+
+    sm_config_set_clkdiv( &c , 25 ) ;
+
+
+    pio_sm_init( pio , sm , offset , &c ) ;
+
+    dma_channel_set_config( dma_chan , &d , false ) ;
+    dma_channel_start( dma_chan ) ;
+
+
+    pio_sm_set_enabled( pio , sm , true ) ;
+}
+%}
