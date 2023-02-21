@@ -3,7 +3,6 @@
 
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
-#include "hardware/dma.h"
 #include "can_rx.pio.h"
 
 #include <inttypes.h>
@@ -311,18 +310,12 @@ int main()
 
 	const uint RX_PIN = 8 ;
 
-    uint dma_chan ;
 
-    dma_channel_claim( dma_chan ) ;
-
-    uint32_t buffer ;
-
-	can_rx_program_init( pio , sm , offset , RX_PIN , dma_chan ) ;
+	can_rx_program_init( pio , sm , offset , RX_PIN ) ;
 
 	while(true)
 	{
-        dma_channel_transfer_to_buffer_now( dma_chan , &buffer , 1 ) ;
-		printf( "%lu\n" , buffer ) ;
+        printf( "%x\n" , pio_sm_get_blocking( pio , sm ) ) ;
 	}
 	return 0 ;
 }

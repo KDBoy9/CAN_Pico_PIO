@@ -62,25 +62,15 @@ static inline pio_sm_config can_rx_program_get_default_config(uint offset) {
 }
 
 #include "hardware/clocks.h"
-#include "hardware/dma.h"
-static inline void can_rx_program_init(PIO pio, uint sm, uint offset, uint input_pin , uint dma_chan ) {
+static inline void can_rx_program_init(PIO pio, uint sm, uint offset, uint input_pin ) {
     pio_sm_config c = can_rx_program_get_default_config( offset ) ;
-    dma_channel_config d = dma_channel_get_default_config( dma_chan ) ;
+	pio_gpio_init( pio , input_pin ) ;
     sm_config_set_in_pins( &c , input_pin ) ;
     sm_config_set_in_shift( &c , false , true , 32 ) ;
     sm_config_set_jmp_pin( &c , input_pin ) ;
     sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX);
-	channel_config_set_read_increment( &d , false ) ;
-	channel_config_set_write_increment( &d , false ) ;
-	channel_config_set_dreq( &d , pio_get_dreq( pio , sm , true ) ) ;
-	channel_config_set_transfer_data_size( &d , DMA_SIZE_32 ) ;
-	dma_channel_set_read_addr( dma_chan , &pio->rxf[sm] , false ) ;
-    pio_gpio_init( pio , input_pin ) ;
-    pio_sm_set_consecutive_pindirs( pio , sm , input_pin , 1 , false ) ;
     sm_config_set_clkdiv( &c , 25 ) ;
     pio_sm_init( pio , sm , offset , &c ) ;
-    dma_channel_set_config( dma_chan , &d , false ) ;
-    dma_channel_start( dma_chan ) ;
     pio_sm_set_enabled( pio , sm , true ) ;
 }
 

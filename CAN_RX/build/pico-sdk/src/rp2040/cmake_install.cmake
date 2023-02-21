@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/kedar/Programs/pico/CAN_RX/build/pico-sdk/src/rp2040/hardware_regs/cmake_install.cmake")
-  include("/home/kedar/Programs/pico/CAN_RX/build/pico-sdk/src/rp2040/hardware_structs/cmake_install.cmake")
+  include("/home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build/pico-sdk/src/rp2040/hardware_regs/cmake_install.cmake")
+  include("/home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build/pico-sdk/src/rp2040/hardware_structs/cmake_install.cmake")
 
 endif()
 

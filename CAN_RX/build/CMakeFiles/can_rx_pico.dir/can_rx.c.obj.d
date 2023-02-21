@@ -1,5 +1,5 @@
 CMakeFiles/can_rx_pico.dir/can_rx.c.obj: \
- /home/kedar/Programs/pico/CAN_RX/can_rx.c \
+ /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/can_rx.c \
  /usr/arm-none-eabi/include/stdlib.h \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
  /usr/arm-none-eabi/include/_ansi.h /usr/arm-none-eabi/include/newlib.h \
@@ -17,18 +17,6 @@ CMakeFiles/can_rx_pico.dir/can_rx.c.obj: \
  /usr/arm-none-eabi/include/machine/stdlib.h \
  /usr/arm-none-eabi/include/alloca.h /usr/arm-none-eabi/include/stdio.h \
  /usr/lib/gcc/arm-none-eabi/12.2.0/include/stdarg.h \
- /usr/arm-none-eabi/include/sys/types.h \
- /usr/arm-none-eabi/include/sys/_stdint.h \
- /usr/arm-none-eabi/include/machine/endian.h \
- /usr/arm-none-eabi/include/machine/_endian.h \
- /usr/arm-none-eabi/include/sys/select.h \
- /usr/arm-none-eabi/include/sys/_sigset.h \
- /usr/arm-none-eabi/include/sys/_timeval.h \
- /usr/arm-none-eabi/include/sys/timespec.h \
- /usr/arm-none-eabi/include/sys/_timespec.h \
- /usr/arm-none-eabi/include/sys/_pthreadtypes.h \
- /usr/arm-none-eabi/include/sys/sched.h \
- /usr/arm-none-eabi/include/machine/types.h \
  /usr/arm-none-eabi/include/sys/stdio.h \
  /home/kedar/Programs/pico/pico-sdk/src/common/pico_stdlib/include/pico/stdlib.h \
  /home/kedar/Programs/pico/pico-sdk/src/common/pico_base/include/pico.h \
@@ -39,9 +27,10 @@ CMakeFiles/can_rx_pico.dir/can_rx.c.obj: \
  /usr/lib/gcc/arm-none-eabi/12.2.0/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/sys/_intsup.h \
- /home/kedar/Programs/pico/CAN_RX/build/generated/pico_base/pico/version.h \
+ /usr/arm-none-eabi/include/sys/_stdint.h \
+ /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build/generated/pico_base/pico/version.h \
  /home/kedar/Programs/pico/pico-sdk/src/common/pico_base/include/pico/config.h \
- /home/kedar/Programs/pico/CAN_RX/build/generated/pico_base/pico/config_autogen.h \
+ /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build/generated/pico_base/pico/config_autogen.h \
  /home/kedar/Programs/pico/pico-sdk/src/boards/include/boards/pico.h \
  /home/kedar/Programs/pico/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
  /home/kedar/Programs/pico/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
@@ -75,10 +64,7 @@ CMakeFiles/can_rx_pico.dir/can_rx.c.obj: \
  /home/kedar/Programs/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pio.h \
  /home/kedar/Programs/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pio.h \
  /home/kedar/Programs/pico/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio_instructions.h \
- /home/kedar/Programs/pico/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
- /home/kedar/Programs/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
- /home/kedar/Programs/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
- /home/kedar/Programs/pico/CAN_RX/build/can_rx.pio.h \
+ /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build/can_rx.pio.h \
  /home/kedar/Programs/pico/pico-sdk/src/rp2_common/hardware_clocks/include/hardware/clocks.h \
  /home/kedar/Programs/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/clocks.h \
  /home/kedar/Programs/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/clocks.h \

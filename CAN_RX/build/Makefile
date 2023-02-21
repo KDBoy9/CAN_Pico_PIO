@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kedar/Programs/pico/CAN_RX
+CMAKE_SOURCE_DIR = /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kedar/Programs/pico/CAN_RX/build
+CMAKE_BINARY_DIR = /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kedar/Programs/pico/CAN_RX/build/CMakeFiles /home/kedar/Programs/pico/CAN_RX/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build/CMakeFiles /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kedar/Programs/pico/CAN_RX/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -195,19 +195,6 @@ bs2_default_padded_checksummed_asm/fast:
 .PHONY : bs2_default_padded_checksummed_asm/fast
 
 #=============================================================================
-# Target rules for targets named cyw43_firmware_package
-
-# Build rule for target.
-cyw43_firmware_package: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cyw43_firmware_package
-.PHONY : cyw43_firmware_package
-
-# fast build rule for target.
-cyw43_firmware_package/fast:
-	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/build.make pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/build
-.PHONY : cyw43_firmware_package/fast
-
-#=============================================================================
 # Target rules for targets named PioasmBuild
 
 # Build rule for target.
@@ -217,7 +204,7 @@ PioasmBuild: cmake_check_build_system
 
 # fast build rule for target.
 PioasmBuild/fast:
-	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild.dir/build.make pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild.dir/build
+	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/PioasmBuild.dir/build.make pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/PioasmBuild.dir/build
 .PHONY : PioasmBuild/fast
 
 #=============================================================================
@@ -230,7 +217,7 @@ cyw43_driver_picow_cyw43_bus_pio_spi_pio_h: cmake_check_build_system
 
 # fast build rule for target.
 cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast:
-	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build.make pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build
+	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build.make pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build
 .PHONY : cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast
 
 can_rx.obj: can_rx.c.obj
@@ -1775,7 +1762,6 @@ help:
 	@echo "... bs2_default_padded_checksummed_asm"
 	@echo "... can_rx_pico_can_rx_pio_h"
 	@echo "... cyw43_driver_picow_cyw43_bus_pio_spi_pio_h"
-	@echo "... cyw43_firmware_package"
 	@echo "... bs2_default"
 	@echo "... can_rx_pico"
 	@echo "... can_rx.obj"

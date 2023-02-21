@@ -1,4 +1,4 @@
-// Padded and checksummed version of: /home/kedar/Programs/pico/CAN_RX/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
+// Padded and checksummed version of: /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
 
 .cpu cortex-m0plus
 .thumb

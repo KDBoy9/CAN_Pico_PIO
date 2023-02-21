@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kedar/Programs/pico/CAN_RX
+CMAKE_SOURCE_DIR = /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kedar/Programs/pico/CAN_RX/build
+CMAKE_BINARY_DIR = /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build
 
 # Utility rule file for can_rx_pico_can_rx_pio_h.
 
@@ -68,9 +68,9 @@ include CMakeFiles/can_rx_pico_can_rx_pio_h.dir/progress.make
 
 CMakeFiles/can_rx_pico_can_rx_pio_h: can_rx.pio.h
 
-can_rx.pio.h: /home/kedar/Programs/pico/CAN_RX/can_rx.pio
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kedar/Programs/pico/CAN_RX/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating can_rx.pio.h"
-	pioasm/pioasm -o c-sdk /home/kedar/Programs/pico/CAN_RX/can_rx.pio /home/kedar/Programs/pico/CAN_RX/build/can_rx.pio.h
+can_rx.pio.h: /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/can_rx.pio
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating can_rx.pio.h"
+	pioasm/pioasm -o c-sdk /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/can_rx.pio /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build/can_rx.pio.h
 
 can_rx_pico_can_rx_pio_h: CMakeFiles/can_rx_pico_can_rx_pio_h
 can_rx_pico_can_rx_pio_h: can_rx.pio.h
@@ -86,6 +86,6 @@ CMakeFiles/can_rx_pico_can_rx_pio_h.dir/clean:
 .PHONY : CMakeFiles/can_rx_pico_can_rx_pio_h.dir/clean
 
 CMakeFiles/can_rx_pico_can_rx_pio_h.dir/depend:
-	cd /home/kedar/Programs/pico/CAN_RX/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kedar/Programs/pico/CAN_RX /home/kedar/Programs/pico/CAN_RX /home/kedar/Programs/pico/CAN_RX/build /home/kedar/Programs/pico/CAN_RX/build /home/kedar/Programs/pico/CAN_RX/build/CMakeFiles/can_rx_pico_can_rx_pio_h.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build /home/kedar/GitHub/CAN_Pico_PIO/CAN_RX/build/CMakeFiles/can_rx_pico_can_rx_pio_h.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/can_rx_pico_can_rx_pio_h.dir/depend
 
